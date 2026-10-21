@@ -1,0 +1,57 @@
+
+
+:root {
+  color-scheme: dark;
+  --midnight: #060b22;
+  --purple:   #2a1f5c;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  background: var(--midnight);
+  overscroll-behavior: none;
+}
+
+
+#scene {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  background: linear-gradient(var(--midnight), var(--purple));
+  animation: scene-in 2.6s ease-out both;
+}
+
+.layer {
+  position: absolute;
+  display: block;
+  pointer-events: none;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  image-rendering: pixelated;
+  -ms-interpolation-mode: nearest-neighbor;
+  will-change: transform;
+}
+
+
+#reflect {
+  animation: aurora-glint 11s ease-in-out infinite alternate;
+}
+
+@keyframes scene-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes aurora-glint {
+  from { opacity: 0.30; }
+  to   { opacity: 0.95; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #scene   { animation: none; }
+  #reflect { animation: none; opacity: 0.65; }
+}
